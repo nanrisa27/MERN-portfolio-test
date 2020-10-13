@@ -1,9 +1,14 @@
 const express = require('express');
 const connectdb = require('./Config/db');
+const { init } = require('./models/User');
 
 const app = express();
 
 connectdb();
+
+//init middleware
+app.use(express.json({ extended: false }))
+
 const PORT = process.envPORT || 5000;
 
 app.get('/', (req, res) => res.send('API running'));
